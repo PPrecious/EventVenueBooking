@@ -1,7 +1,6 @@
 # EventVenueBooking
 
-EventEase is a web-based Venue Booking System developed using ASP.NET Core MVC. 
-The system is designed to help booking the organization EventEase efficiently manage venues, events, and bookings, eliminating manual errors such as double bookings and scheduling conflicts.
+EventEase is a web-based Venue Booking System developed using ASP.NET Core MVC. The system is designed to help booking the organization EventEase efficiently manage venues, events, and bookings, eliminating manual errors such as double bookings and scheduling conflicts.
 
 VenuesController.cs:
 using EventVenueBooking.Data;
