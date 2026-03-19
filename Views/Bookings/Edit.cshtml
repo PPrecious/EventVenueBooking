@@ -1,0 +1,48 @@
+﻿@model EventVenueBooking.Models.Booking
+
+@{
+    ViewData["Title"] = "Edit Booking";
+}
+
+<h1>Edit Booking</h1>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="BookingId" />
+
+    <div class="form-group mb-3">
+        <label asp-for="EventId" class="form-label">Event</label>
+        <select asp-for="EventId" class="form-select" asp-items="@(new SelectList(ViewBag.Events, "EventId", "EventName", Model.EventId))">
+            <option value="">-- Select Event --</option>
+        </select>
+        <span asp-validation-for="EventId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="VenueId" class="form-label">Venue</label>
+        <select asp-for="VenueId" class="form-select" asp-items="@(new SelectList(ViewBag.Venues, "VenueId", "VenueName", Model.VenueId))">
+            <option value="">-- Select Venue --</option>
+        </select>
+        <span asp-validation-for="VenueId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="StartDate" class="form-label"></label>
+        <input asp-for="StartDate" class="form-control" type="datetime-local" value="@Model.StartDate.ToString("yyyy-MM-ddTHH:mm")" />
+        <span asp-validation-for="StartDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="EndDate" class="form-label"></label>
+        <input asp-for="EndDate" class="form-control" type="datetime-local" value="@Model.EndDate.ToString("yyyy-MM-ddTHH:mm")" />
+        <span asp-validation-for="EndDate" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
