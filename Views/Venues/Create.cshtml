@@ -6,33 +6,49 @@
 
 <h2>Add Venue</h2>
 
-<form asp-action="Create" method="post">
+<form asp-action="Create" method="post" enctype="multipart/form-data">
+
+    <!-- Validation summary -->
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <!-- Venue Name -->
     <div class="form-group">
         <label asp-for="VenueName"></label>
         <input asp-for="VenueName" class="form-control" />
         <span asp-validation-for="VenueName" class="text-danger"></span>
     </div>
 
+    <!-- Location -->
     <div class="form-group">
         <label asp-for="Location"></label>
         <input asp-for="Location" class="form-control" />
         <span asp-validation-for="Location" class="text-danger"></span>
     </div>
 
+    <!-- Capacity -->
     <div class="form-group">
         <label asp-for="Capacity"></label>
         <input asp-for="Capacity" class="form-control" type="number" min="1" />
         <span asp-validation-for="Capacity" class="text-danger"></span>
     </div>
 
+    <!-- Image Upload (Azure Blob) -->
+    <div class="form-group">
+        <label>Upload Image</label>
+        <input type="file" name="imageFile" class="form-control" />
+    </div>
+
+    <!-- Optional fallback (if no upload) -->
     <div class="form-group">
         <label asp-for="ImageUrl"></label>
-        <input asp-for="ImageUrl" class="form-control" placeholder="Paste image URL" />
+        <input asp-for="ImageUrl" class="form-control" placeholder="Optional: Paste image URL if no file uploaded" />
         <span asp-validation-for="ImageUrl" class="text-danger"></span>
     </div>
 
+    <!-- Buttons -->
     <button type="submit" class="btn btn-success mt-2">Create</button>
     <a asp-action="Index" class="btn btn-secondary mt-2">Back to List</a>
+
 </form>
 
 @section Scripts {
