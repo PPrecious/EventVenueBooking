@@ -1,0 +1,41 @@
+﻿@model IEnumerable<EventVenueBooking.Models.Venue>
+
+@{
+    ViewData["Title"] = "Venues";
+}
+
+<h2>Venues</h2>
+
+<p>
+    <a class="btn btn-primary" asp-action="Create">Add New Venue</a>
+</p>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Venue Name</th>
+            <th>Location</th>
+            <th>Capacity</th>
+            <th>Image</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var venue in Model)
+        {
+            <tr>
+                <td>@venue.VenueName</td>
+                <td>@venue.Location</td>
+                <td>@venue.Capacity</td>
+                <td>
+                    <img src="@venue.ImageUrl" alt="@venue.VenueName" width="100" />
+                </td>
+                <td>
+                    <a class="btn btn-info btn-sm" asp-action="Details" asp-route-id="@venue.VenueId">Details</a>
+                    <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-id="@venue.VenueId">Edit</a>
+                    <a class="btn btn-danger btn-sm" asp-action="Delete" asp-route-id="@venue.VenueId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,32 @@
+# Build Folders
+bin/
+obj/
+
+# Visual Studio
+.vs/                   # Temporary VS files
+*.user                 # User-specific solution settings
+*.suo                  # VS Solution User Options
+*.userosscache         # Optional cache
+*.sln.docstates        # Document states
+
+# Entity Framework / Local DB
+*.db                   # Local database files
+*.mdf                  # SQL Server MDF files
+*.ldf                  # SQL Server log files
+
+
+# Logs
+*.log                  # Log files
+
+# Node.js (if using npm for front-end)
+node_modules/
+
+# Sensitive configs
+appsettings.Development.json
+secrets.json
+
+# Optional: VS Code
+.vscode/
+
+# Ignore Visual Studio temporary files
+.vs/

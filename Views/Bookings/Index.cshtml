@@ -1,0 +1,52 @@
+﻿@model IEnumerable<EventVenueBooking.Models.Booking>
+
+@{
+    ViewData["Title"] = "Bookings";
+}
+
+<h1>Bookings</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Booking</a>
+</p>
+
+<!-- Search Form -->
+<form method="get" class="mb-3">
+    <input type="text" name="search" class="form-control"
+           placeholder="Search by Event Name or Booking ID"
+           style="width: 300px; display: inline-block;" />
+
+    <button type="submit" class="btn btn-secondary">Search</button>
+</form>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Booking ID</th>
+            <th>Event</th>
+            <th>Venue</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Booking Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var booking in Model)
+        {
+            <tr>
+                <td>@booking.BookingId</td>
+                <td>@booking.Event?.EventName</td>
+                <td>@booking.Venue?.VenueName</td>
+                <td>@booking.StartDate.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@booking.EndDate.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>@booking.BookingDate.ToString("yyyy-MM-dd HH:mm")</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@booking.BookingId" class="btn btn-info btn-sm">Details</a>
+                    <a asp-action="Edit" asp-route-id="@booking.BookingId" class="btn btn-warning btn-sm">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@booking.BookingId" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
